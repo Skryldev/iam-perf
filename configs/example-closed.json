@@ -5,7 +5,7 @@
     "allowed_paths": ["/login", "/api/v1/"]
   },
   "authorization": {
-    "accepted": false,
+    "accepted": true,
     "scope_note": "EXAMPLE — replace with your documented approval (who, what scope, when). Load generation stays blocked until accepted=true AND the runtime confirmation flag is passed."
   },
   "scenario": {
