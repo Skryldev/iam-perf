@@ -1,0 +1,39 @@
+# Local test environment for iam-perf.
+#
+# IMPORTANT: this compose file exists for CONTROLLED local/lab execution only.
+# It never points at the production IAM service by itself. Authorization still
+# requires config authorization.accepted=true AND IAMPERF_ACCEPT_RISK=true.
+#
+# Usage:
+#   export IAMPERF_TEST_PASSWORD='...'      # injected at runtime, never stored
+#   docker compose run --rm iam-perf validate -c /configs/example-closed.json
+#   docker compose run --rm iam-perf run -c /configs/example-closed.json --iam-accept-risk
+
+services:
+  iam-perf:
+    image: iam-perf:0.1.0
+    build:
+      context: .
+      args:
+        VERSION: "0.1.0"
+    # Hardened defaults: read-only rootfs, no capabilities, no privilege gain.
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:size=64m,noexec,nosuid
+    environment:
+      # Secret injection at runtime only. Never bake into images or compose.
+      - IAMPERF_TEST_PASSWORD
+      - IAMPERF_ACCEPT_RISK
+    volumes:
+      - ./configs:/configs:ro
+      - ./reports:/reports
+    # No published ports by default; enable only if using the Prometheus view.
+    # ports:
+    #   - "127.0.0.1:9537:9537"
+    working_dir: /
+    # Both signals are handled by the CLI (graceful drain ≤ 10 s).
+    stop_grace_period: 15s

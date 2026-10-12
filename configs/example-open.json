@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "target": {
+    "base_url": "https://iam.mohaymen.ir",
+    "allowed_paths": ["/login", "/api/v1/"]
+  },
+  "authorization": {
+    "accepted": false,
+    "scope_note": "EXAMPLE — open-model arrival pattern; still requires the two-key approval."
+  },
+  "scenario": {
+    "name": "login-open-ramp",
+    "flow": "mohaymen-login",
+    "model": "open",
+    "virtual_users": 0,
+    "request_rate": 5.0,
+    "max_in_flight": 32,
+    "duration": "1m",
+    "ramp_up": "10s",
+    "ramp_down": "10s",
+    "warm_up": "10s",
+    "think_time": "0s"
+  },
+  "transport": {
+    "request_timeout": "15s",
+    "max_idle_conns_per_host": 32
+  },
+  "credentials": {
+    "username": "SRETEST",
+    "password_env": "IAMPERF_TEST_PASSWORD"
+  },
+  "safety": {
+    "max_virtual_users": 50,
+    "max_requests_per_second": 100,
+    "max_duration": "10m",
+    "max_total_requests": 50000,
+    "stop_error_rate_pct": 30,
+    "stop_429_count": 10
+  },
+  "report": {
+    "output_dir": "reports",
+    "formats": ["json", "terminal"]
+  },
+  "log": { "level": "info", "format": "text" }
+}

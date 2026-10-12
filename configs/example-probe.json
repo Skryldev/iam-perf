@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "target": {
+    "base_url": "https://iam.mohaymen.ir",
+    "allowed_paths": ["/login"]
+  },
+  "authorization": {
+    "accepted": false,
+    "scope_note": "EXAMPLE — non-authenticating probe for transport/protocol validation without credentials."
+  },
+  "scenario": {
+    "name": "transport-probe",
+    "flow": "transport-probe",
+    "model": "closed",
+    "virtual_users": 2,
+    "duration": "30s",
+    "think_time": "1s"
+  },
+  "credentials": {},
+  "safety": {
+    "max_virtual_users": 10,
+    "max_requests_per_second": 50,
+    "max_duration": "5m",
+    "max_total_requests": 5000,
+    "stop_429_count": 5
+  },
+  "report": { "output_dir": "reports", "formats": ["json", "terminal"] },
+  "log": { "level": "info", "format": "text" }
+}

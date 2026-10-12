@@ -1,0 +1,306 @@
+{
+  "schema_version": 1,
+  "run_id": "9df8b4ae-1d59-4141-b80d-653d3a8a4cad",
+  "generated_at": "2026-10-11T06:31:05.335065774Z",
+  "module_version": "0.1.0",
+  "metadata": {
+    "started_at": "2026-10-11T06:31:02.334958144Z",
+    "finished_at": "2026-10-11T06:31:05.335065774Z",
+    "duration_seconds": 3,
+    "warmup_seconds": 0,
+    "termination": "completed",
+    "config_summary": {
+      "authorization": {
+        "accepted": true,
+        "scope_note": ""
+      },
+      "credentials": {
+        "password_env": "[REDACTED]",
+        "password_file": "[REDACTED]",
+        "username": "[REDACTED]"
+      },
+      "flow": {
+        "authentication_status": true,
+        "authentication_status_path": "/api/v1/auth/authentication-status",
+        "initiate_login_path": "/api/v1/auth/initiate-login",
+        "login_path": "/api/v1/auth/login",
+        "session_proof": true,
+        "session_proof_path": "/api/v1/apps/users/dashboardPermissions",
+        "verify_password_path": "/api/v1/auth/verifyPassword"
+      },
+      "log": {
+        "format": "text",
+        "level": "info"
+      },
+      "metrics": {
+        "prometheus_addr": "",
+        "prometheus_enabled": false
+      },
+      "report": {
+        "formats": [
+          "json",
+          "terminal"
+        ],
+        "output_dir": "reports"
+      },
+      "safety": {
+        "max_duration": "30m0s",
+        "max_requests_per_second": 200,
+        "max_total_requests": 200000,
+        "max_virtual_users": 100,
+        "min_samples_for_stop": 20,
+        "stop_429_count": 20,
+        "stop_5xx_count": 100,
+        "stop_error_rate_pct": 50,
+        "stop_p99_millis": 10000
+      },
+      "scenario": {
+        "duration": "3s",
+        "flow": "mohaymen-login",
+        "max_in_flight": 8,
+        "model": "open",
+        "name": "login-baseline",
+        "ramp_down": "0s",
+        "ramp_up": "1s",
+        "request_rate": 20,
+        "think_time": "5ms",
+        "virtual_users": 2,
+        "warm_up": "0s"
+      },
+      "schema_version": 1,
+      "target": {
+        "allowed_paths": [
+          "/login",
+          "/api/v1/"
+        ],
+        "base_url": "http://127.0.0.1:44363"
+      },
+      "transport": {
+        "accept_language": "fa-IR",
+        "dial_timeout": "5s",
+        "idle_conn_timeout": "1m0s",
+        "max_conns_per_host": 0,
+        "max_idle_conns": 256,
+        "max_idle_conns_per_host": 64,
+        "max_redirects": 5,
+        "max_response_body_bytes": 1048576,
+        "proxy_url": "",
+        "request_timeout": "15s",
+        "response_header_timeout": "10s",
+        "tls_handshake_timeout": "5s",
+        "trusted_cas_file": "",
+        "user_agent": "iam-perf/0.1 (+load-test; approved-scope-only)",
+        "warm_login_page": false
+      }
+    }
+  },
+  "target": {
+    "base_url": "http://127.0.0.1:44363",
+    "allowed_paths": [
+      "/login",
+      "/api/v1/"
+    ],
+    "flow": "mohaymen-login"
+  },
+  "scenario": {
+    "name": "login-baseline",
+    "model": "open",
+    "virtual_users": 2,
+    "duration_seconds": 3,
+    "think_time_seconds": 0.005
+  },
+  "workload": {
+    "configured_rps": 20,
+    "observed_rps": 66.66,
+    "attempt_rps": 13.33,
+    "backpressure_drops": 0
+  },
+  "attempts": {
+    "started": 40,
+    "succeeded": 40,
+    "failed": 0,
+    "aborted": 0,
+    "warmup_excluded": 0,
+    "success_rate_pct": 100,
+    "failure_rate_pct": 0
+  },
+  "requests": {
+    "started": 200,
+    "completed": 200,
+    "failed": 0,
+    "status_distribution": {
+      "200": 200
+    },
+    "redirects": 0,
+    "connection_reuse": 192,
+    "new_connections": 8,
+    "timeouts": 0,
+    "connection_errors": 0
+  },
+  "latency": {
+    "attempt": {
+      "count": 40,
+      "mean_ms": 0.55,
+      "p50_ms": 0.55,
+      "p90_ms": 0.7,
+      "p95_ms": 0.83,
+      "p99_ms": 0.89,
+      "min_ms": 0.32,
+      "max_ms": 0.86
+    }
+  },
+  "steps": [
+    {
+      "step": "authentication-status",
+      "started": 40,
+      "failed": 0,
+      "status_distribution": {
+        "200": 40
+      },
+      "latency": {
+        "count": 40,
+        "mean_ms": 0.05,
+        "p50_ms": 0.04,
+        "p90_ms": 0.07,
+        "p95_ms": 0.13,
+        "p99_ms": 0.19,
+        "min_ms": 0.03,
+        "max_ms": 0.13
+      }
+    },
+    {
+      "step": "initiate-login",
+      "started": 40,
+      "failed": 0,
+      "status_distribution": {
+        "200": 40
+      },
+      "latency": {
+        "count": 40,
+        "mean_ms": 0.24,
+        "p50_ms": 0.23,
+        "p90_ms": 0.4,
+        "p95_ms": 0.47,
+        "p99_ms": 0.56,
+        "min_ms": 0.12,
+        "max_ms": 0.51
+      }
+    },
+    {
+      "step": "login",
+      "started": 40,
+      "failed": 0,
+      "status_distribution": {
+        "200": 40
+      },
+      "latency": {
+        "count": 40,
+        "mean_ms": 0.06,
+        "p50_ms": 0.05,
+        "p90_ms": 0.15,
+        "p95_ms": 0.18,
+        "p99_ms": 0.2,
+        "min_ms": 0.03,
+        "max_ms": 0.12
+      }
+    },
+    {
+      "step": "session-proof",
+      "started": 40,
+      "failed": 0,
+      "status_distribution": {
+        "200": 40
+      },
+      "latency": {
+        "count": 40,
+        "mean_ms": 0.06,
+        "p50_ms": 0.05,
+        "p90_ms": 0.12,
+        "p95_ms": 0.16,
+        "p99_ms": 0.19,
+        "min_ms": 0.03,
+        "max_ms": 0.15
+      }
+    },
+    {
+      "step": "verify-password",
+      "started": 40,
+      "failed": 0,
+      "status_distribution": {
+        "200": 40
+      },
+      "latency": {
+        "count": 40,
+        "mean_ms": 0.08,
+        "p50_ms": 0.08,
+        "p90_ms": 0.16,
+        "p95_ms": 0.18,
+        "p99_ms": 0.2,
+        "min_ms": 0.04,
+        "max_ms": 0.14
+      }
+    }
+  ],
+  "errors": {
+    "classes": {},
+    "representative": {}
+  },
+  "safety": {
+    "termination_reason": "",
+    "tripped": false
+  },
+  "traces": {
+    "ttfb": {
+      "count": 200,
+      "mean_ms": 0.06,
+      "p50_ms": 0.04,
+      "p90_ms": 0.14,
+      "p95_ms": 0.17,
+      "p99_ms": 0.2,
+      "min_ms": 0.02,
+      "max_ms": 0.37
+    },
+    "dns": {
+      "count": 0,
+      "mean_ms": 0,
+      "p50_ms": 0,
+      "p90_ms": 0,
+      "p95_ms": 0,
+      "p99_ms": 0,
+      "min_ms": 0,
+      "max_ms": 0
+    },
+    "tcp": {
+      "count": 8,
+      "mean_ms": 0.1,
+      "p50_ms": 0.1,
+      "p90_ms": 0.17,
+      "p95_ms": 0.19,
+      "p99_ms": 0.2,
+      "min_ms": 0.07,
+      "max_ms": 0.13
+    },
+    "tls": {
+      "count": 0,
+      "mean_ms": 0,
+      "p50_ms": 0,
+      "p90_ms": 0,
+      "p95_ms": 0,
+      "p99_ms": 0,
+      "min_ms": 0,
+      "max_ms": 0
+    }
+  },
+  "environment": {
+    "goos": "linux",
+    "goarch": "amd64",
+    "go_version": "go1.27.2",
+    "num_cpu": 2
+  },
+  "limitations": [
+    "Failure-response contract of the target was not present in the supplied evidence; failures are classified conservatively (non-2xx, missing tokens, null userId).",
+    "Session model is header-token based per the capture (x-auth-token); server-side cookie behavior was not observed and is not modeled.",
+    "Single-factor password flow only; MFA/challenge paths were not captured and are not implemented.",
+    "Results are bounded by this generator host's CPU/memory/network; verify the generator was not saturated (see environment fields) before attributing limits to the target."
+  ]
+}
